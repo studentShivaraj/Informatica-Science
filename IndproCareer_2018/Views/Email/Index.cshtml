@@ -1,0 +1,88 @@
+﻿@model PagedList.IPagedList<IndproCareer.Entity.Models.SendMail>
+@using PagedList.Mvc
+@{
+    ViewBag.Title = "SendMail";
+    <link href="~/Content/themes/base/jquery-ui.min.css" rel="stylesheet" />
+}
+
+<div class="col-md-12">
+    <div class="col-md-10">
+        @using (Html.BeginForm("Index", "Email", FormMethod.Post))
+        {
+            @Html.TextBox("To", "", new { @placeholder = "Search By Name" })
+            <span>or</span>
+
+            <span style="margin-right:inherit">
+                @Html.TextBox("fromDate", "", new { @class = "datepicker", @PlaceHolder = "From Date" })
+            </span>
+            @Html.TextBox("toDate", "", new { @class = "datepicker1", @PlaceHolder = "End Date" })
+            <input type="submit" value="search" />
+        }
+    </div>
+    <div class="col-md-12">
+        <button class="pull-right">
+            @Html.ActionLink("Send Email", "SendEmail")
+        </button>
+    </div>
+</div>
+
+<hr />
+<table class="table">
+    <tr>
+        <th>
+            @Html.ActionLink("To", "Index", new { sortOrder = "To", CurrentSort = ViewBag.CurrentSort })
+        </th>
+
+        <th>
+            @Html.ActionLink("Subject", "Index", new { sortOrder = "Subject", CurrentSort = ViewBag.CurrentSort })
+        </th>
+        <th>
+            @Html.ActionLink("Message", "")
+        </th>
+        <th>
+            @Html.ActionLink("DateTime", "Index", new { sortOrder = "DateTime", CurrentSort = ViewBag.CurrentSort })
+        </th>
+
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.To)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Subject)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Message)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DateTime)
+            </td>
+        </tr>
+    }
+</table>
+
+<div id='Paging' style="text-align:right">
+    Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber)
+    of @Model.PageCount
+    @Html.PagedListPager(Model, page => Url.Action("Index", new { page }))
+</div>
+
+@section Scripts
+{
+    <script src="~/Scripts/jquery-ui-1.12.1.min.js"></script>
+
+    <script>
+        $('.datepicker').datepicker({
+            dateFormat: "dd-mm-yy"
+        });
+        $('.datepicker1').datepicker({
+            dateFormat: "dd-mm-yy"
+        });
+
+
+    </script>
+}

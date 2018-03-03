@@ -1,0 +1,74 @@
+﻿@model IEnumerable<IndproCareer.Repository.DbContext.ApplicationUser>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12 col-sm-12">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">User List</h3>
+                </div>
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-md-12 col-sm-12 col-xs-12">
+                            <table class="table">
+                                <tr>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.FullName)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.Gender)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.RoleName)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.UserName)
+                                    </th>
+
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.Email)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.PhoneNumber)
+                                    </th>
+                                    <th></th>
+                                </tr>
+
+                                @foreach (var item in Model)
+                                {
+                                    <tr>
+                                        <td>
+                                            <a href='@Url.Action("Edit", "Account", new { id = item.Id })'>
+                                                @Html.DisplayFor(modelItem => item.FullName)
+                                                @*<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">Add New Car</button><br /><br />*@
+                                            </a>
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Gender)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.RoleName)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.UserName)
+                                        </td>                                        
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Email)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.PhoneNumber)
+                                        </td>
+                                    </tr>
+                                }
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

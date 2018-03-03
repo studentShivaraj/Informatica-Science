@@ -1,0 +1,47 @@
+﻿@model PagedList.IPagedList<IndproCareer.Entity.Models.Branch>
+@using PagedList.Mvc
+@{
+    ViewBag.Title = "Index";
+}
+
+<p>
+    @Html.ActionLink("Create Branch", "Create")
+</p>
+<hr />
+<table class="table">
+    <tr>
+        <th>            
+            @Html.ActionLink("Name", "Index", new { sortOrder = "Name", CurrentSort = ViewBag.CurrentSort })
+        </th>
+        <th>
+            @Html.ActionLink("College", "Index", new { sortOrder = "CId", CurrentSort = ViewBag.CurrentSort })
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (IndproCareer.Entity.Models.Branch item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @if (item.Colleges != null)
+                {
+                    <span>@item.Colleges.Name</span>
+                }
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.BranchId }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.BranchId })
+            </td>
+        </tr>
+    }
+
+</table>
+
+<div id='Paging' style="text-align:right">
+    Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber)
+    of @Model.PageCount
+    @Html.PagedListPager(Model, page => Url.Action("Index", new { page }))
+</div>

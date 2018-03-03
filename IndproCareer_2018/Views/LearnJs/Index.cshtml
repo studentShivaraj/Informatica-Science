@@ -1,0 +1,160 @@
+﻿
+@{
+    ViewBag.Title = "Index";    
+<link href="~/Content/themes/base/jquery-ui.min.css" rel="stylesheet" />
+}
+
+<h2>Index</h2>
+
+@*<input type="button" id="btnSubmit" onclick="find()" value="submit" />*@
+<form>
+    <body>
+        <input name="t1" />
+        <input name="t2" />
+
+        <input type="button" onclick="find(t1.value,t2.value)" value="jio" />
+    </body>
+</form>
+
+<form>
+    <input type="button" value="Print" onclick="window.print()" />
+</form>
+
+@section Scripts
+{
+<script src="~/Scripts/jquery-1.12.4.min.js"></script>
+    <script>
+        var name = "shivaraj";
+        var company = "indpro";
+
+        function find(name, age) {
+            if (name == "" && age == "")
+                return false;
+            document.write("" + name + "is" + age);
+        }
+
+
+        //document.write("name: " + name + "<br>" + "Company :" + company);
+        //alert(name);
+        //confirm(company);
+        //prompt("enter your office ")
+        
+        //var a = 99;
+        //a += 5;
+        //document.write("<br>" + a);
+
+        //document.write("****************Comaparision Operator**************")
+        //var num = 500;
+        //document.write("<br>", num == 10);
+        //document.write("<br>", num != 10);
+
+        //document.write("<br>", num > 10);
+        //document.write("<br>", num >= 10);
+
+        //document.write("<br>", num < 10);
+        //document.write("<br>", num <= 10);
+
+        //document.write("****************Ternary Operator**************")
+        //var un = prompt("Enter UserName");
+        //var pwd = prompt("Enter password");
+
+        //var message=(un=="shivaraj" && pwd=="methre")? "succesfully logged in" : "incorrect Un and Pwd";
+        //alert(message);
+
+        //document.write("****************Logical OR(||) Operator**************")
+
+        //var un = prompt("Enter UserName");
+        //var pwd = prompt("Enter password");
+
+        //var message = (un == "shivaraj" || pwd == "methre") ? "succesfully logged in" : "incorrect Un and Pwd";
+        //alert(message);
+
+
+        //document.write("****************sitch stmt***************")
+
+        //var number = prompt("enter Number");
+        //switch (number)
+        //{
+        //    case 1:
+        //        document.write("for love");
+        //        break;
+        //    case 2:
+        //        document.write("for Hate");
+        //        break;
+
+        //    default:
+        //        document.write("love you so much");
+        //        break;
+        //}
+
+        //document.write("****************loop***************", "<br>")
+        //var i;
+        //for (i = 0; i < 5; i++)
+        //{
+        //    document.write("<br>","indpro");
+        //}
+
+        //document.write("****************loop***************", "<br>")
+        //var arr = new Array(5);
+        //arr[0] = 1;
+        //arr[1] = 2;
+        //arr[2] = 3;
+        //arr[3] = 4;
+        //arr[4] = 5;
+        //for( i=0;i<5;i++)
+        //{
+        //    document.write(arr[i], "<br>");
+        //}
+        //document.write("****************string***************", "<br>")
+        //var fname = "raj";
+        //var lname = "baju";
+
+        //document.write("<br>", fname);
+        //document.write("<br>", lname);
+
+        //document.write("<br>", fname.concat(lname));
+        //document.write("<br>", fname.charAt(3));
+        
+        //document.write("<br>", lname.toUpperCase());
+        //document.write("<br>", lname.toLowerCase);
+        //document.write("<br>", fname.trim(''));
+
+        
+        document.write("****************js object***************", "<br>")
+        var jsObject = { "Industry": "it", "Service": "online", "payment": "byPost" };
+        document.write("<br>", "Industry:",  jsObject.Industry);
+        document.write("<br>", "Service:",  jsObject.Service);
+        document.write("<br>", "payment:", jsObject.payment);
+
+        var txt = "";
+        var x;
+
+        for(x in Object)
+        {
+            txt += Object[x] + ", ";
+        }
+        document.write("<br>",txt)
+
+        document.write("****************date***************", "<br>")
+        var dt = new Date("20-15-2018 19:11:22:478");
+
+        document.write("Date:", Date());
+        
+        document.write("<br>", "Date:", +dt);
+
+        document.write("<br>", "Date:", +dt.getDate());
+
+        document.write("<br>", "Date:", +dt.getFullYear());
+
+        document.write("<br>", "Date:", "getHours", +dt.getHours());
+        document.write("<br>", "Date:","getMilliseconds", +dt.getMilliseconds());
+        document.write("<br>", "getMinutes","Date:", +dt.getMinutes());
+        document.write("<br>", "getMonth", "Date:", +dt.getMonth());
+        document.write("<br>", "getSeconds", "Date:", +dt.getSeconds());
+
+       
+    </script>
+
+}
+
+<span>shivaraj</span>

@@ -1,0 +1,111 @@
+﻿@model IndproCareer.Entity.Models.Admission
+
+@{
+    ViewBag.Title = "Create";
+    <link href="~/Content/themes/base/jquery-ui.min.css" rel="stylesheet" />
+}
+@using (Html.BeginForm("Create", "Admission", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-sm-12">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <ul class="nav nav-tabs" data-tabs="tabs">
+                            <li class="active">
+                                <a data-toggle="tab" href="#yourDocument">Your Document</a>
+                            </li>
+                            <li>
+                                <a data-toggle="tab" href="#profileInfo">Profile Information</a>
+                            </li>
+                            <li>
+                                <a data-toggle="tab" href="#previousEmployeer">previousEmployeer</a>
+                            </li>
+                            <li class="active">
+                                <a data-toggle="tab" href="#education">YourEducation</a>
+                            </li>
+                            <li>
+                                <a data-toggle="tab" href="#language">language</a>
+                            </li>
+                            <li>
+                                <a data-toggle="tab" href="#address">Adress</a>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="tab-content">
+
+                        <div class="tab-pane active" id="yourDocument">
+                            <div class="panel-body">
+                                <div class="row">
+                                    <h2>basicDetails</h2>
+
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="tab-pane" id="profileInfo">
+                            <div class="panel-body">
+                                <div class="row">
+                                    <h2>basicDetails</h2>
+                                </div>
+                            </div>
+                            <div class="form-horizontal">
+                                <div class="form-group">
+                                    <div class="col-md-offset-2 col-md-10">
+                                        <input type="button" id="previous" class="btn btn-default" value="Previous" />
+                                        <input type="submit" value="Save" class="btn btn-default" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="tab-pane active" id="previousEmployeer">
+                            <div class="panel-body">
+                                <div class="row">
+                                    <h2>previousEmployeer</h2>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="tab-pane active" id="education">
+                            <div class="panel-body">
+                                <div class="row">
+                                    <h2>YourEducation</h2>
+                                </div>
+                            </div>
+                        </div>
+
+
+
+                        <div class="tab-pane active" id="language">
+                            <div class="panel-body">
+                                <div class="row">
+                                    <h2>language</h2>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="tab-pane active" id="address">
+                            <div class="panel-body">
+                                <div class="row">
+                                    <h2>address</h2>
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+}

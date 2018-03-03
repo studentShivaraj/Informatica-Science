@@ -1,0 +1,149 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+
+    <style>
+        .mylink {
+            background: url('../Content/Images/indpro.jpg') no-repeat center right;
+            display: block;
+            height: 84px;
+            width: 264px;
+        }
+    </style>
+
+    <style>
+        .dropbtn {
+            /*background-color:black;*/
+            color: white;
+            padding: 10px;
+            font-size: 16px;
+            border: none;
+        }
+
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #f1f1f1;
+            min-width: 0px;
+            box-shadow: 0px 8px 16px 0px rgba(126, 99, 99, 0.00);
+            z-index: 1;
+        }
+
+            .dropdown-content a {
+                color: black;
+                padding: 5px 20px;
+                text-decoration: initial;
+                display: block;
+            }
+
+                .dropdown-content a:hover {
+                    background-color: #ddd;
+                }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        .dropdown:hover .dropbtn {
+            background-color: #3e8e41;
+        }
+    </style>
+
+</head>
+<body>
+    @if (Request.IsAuthenticated)
+    {
+        <div class="navbar navbar-inverse navbar-fixed-top">
+
+
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+
+                    @Html.ActionLink(".", "Index", "Home", null, new { @class = "mylink" })
+                </div>
+                @Html.Partial("_LoginPartial")
+                <br /><br />
+                <div class="navbar-collapse collapse">
+                    <div class="nav navbar-nav">
+                        SendMessage
+                        <li>@Html.ActionLink("SendMessage", "SendMessage", "SMS")</li>
+                        <div class="dropdown">
+                            <a class="dropbtn">university</a>
+                            <div class="dropdown-content">
+                                @Html.ActionLink("University", "Index", "University")
+                                @Html.ActionLink("College", "Index", "College")
+                                @Html.ActionLink("School", "Index", "School")
+                                @Html.ActionLink("Classes", "Index", "Classes")
+                                @Html.ActionLink("Branch", "Index", "Branch")
+                            </div>
+                        </div>
+                        <div class="dropdown">
+                            <a class="dropbtn">others</a>
+                            <div class="dropdown-content">
+                                @Html.ActionLink("Send Mail", "Index", "Email")
+                                @Html.ActionLink("Language", "Index", "Language")
+                            </div>
+                        </div>
+                        <div class="dropdown">
+                            <a class="dropbtn">others</a>
+                            <div class="dropdown-content">
+                                @Html.ActionLink("User List", "Index", "Register")
+                                @Html.ActionLink("Admissions", "Index", "Admission")
+
+                            </div>
+                        </div>
+                        @Html.ActionLink("User", "Index", "Account")
+                        @Html.ActionLink("Role", "CreateRole", "Account")
+                        @Html.ActionLink("ContactUs", "Index", "ContactUs")
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    }
+
+    <div class="container">
+        <ul class="nav navbar-nav"></ul><br /><br /><br />
+    </div>
+
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        @if (Request.IsAuthenticated)
+        {
+            <footer class="text-center">
+                <p>&copy; @DateTime.Now.Year-Shivaraj Methre</p>
+              
+                @Html.ActionLink("Home", "Index", "Home") |
+                @Html.ActionLink("About-Us", "About", "Home") |
+                @Html.ActionLink("Notices", "Notices", "Home") |
+                @Html.ActionLink("Contact", "Contact", "Home") |             
+                @Html.ActionLink("Feedback", "Feedback", "Home") |
+
+            </footer>
+        }
+
+    </div>
+
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

@@ -1,0 +1,96 @@
+﻿@model PagedList.IPagedList<IndproCareer.Entity.Models.School>
+@using PagedList.Mvc
+@{
+    ViewBag.Title = "School";
+}
+
+<div class="col-md-10">
+    <div class="col-md-5">
+        @using (Html.BeginForm("Index", "School", FormMethod.Post))
+        {
+            @Html.TextBox("Name", "", new { @placeholder = "Search By Name" })
+            <input type="submit" id="search" />
+        }
+    </div>
+    <div class="col-md-5">
+        <button>
+            @Html.ActionLink("Create New", "Create")
+        </button>
+    </div>
+</div>
+
+<table class="table">
+    <tr>
+
+        <th>
+            @Html.ActionLink("Name", "Index", new { sortOrder = "Name", CurrentSort = ViewBag.CurrentSort })
+        </th>
+        <th>
+            @Html.ActionLink("College", "Index", new { sortOrder = "CId", CurrentSort = ViewBag.CurrentSort })
+        </th>
+        <th>
+            @Html.ActionLink("YOE", "Index", new { sortOrder = "YOE", CurrentSort = ViewBag.CurrentSort })
+        </th>
+        <th>
+            @Html.ActionLink("Email", "Index", new { sortOrder = "Email", CurrentSort = ViewBag.CurrentSort })
+        </th>
+        <th>
+            @Html.ActionLink("Contact", "Index", new { sortOrder = "Contact", CurrentSort = ViewBag.CurrentSort })
+        </th>
+        <th>
+            @Html.ActionLink("City", "")
+        </th>
+        <th>
+            @Html.ActionLink("Pincode", "Index", new { sortOrder = "Pincode", CurrentSort = ViewBag.CurrentSort })
+        </th>
+        <th>
+            @Html.ActionLink("Adress", "")
+        </th>
+       
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Name)
+        </td>
+       
+        <td>
+            @if (item.Colleges != null)
+            {
+                <span>@item.Colleges.Name</span>
+            }
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.YOE)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Email)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Contact)
+        </td>
+       
+        <td>
+            @Html.DisplayFor(modelItem => item.City)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Pincode)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Adress)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.SId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.SId })
+        </td>
+    </tr>
+}
+
+</table>
+<div id='Paging' style="text-align:right">
+    Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber)
+    of @Model.PageCount
+    @Html.PagedListPager(Model, page => Url.Action("Index", new { page }))
+</div>
